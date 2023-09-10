@@ -14,9 +14,9 @@ export default function ChatPage(){
     const messageEndRef = useRef(null);
 
      // Function that adds a new message to the state
-    function addMessage(text, sender) {
+    function addMessage(input, sender) {
         const time = new Date().toLocaleTimeString();
-        const message = {text, sender, time};
+        const message = {message: input, sender, time};
         setMessages((prevMessages)=>[message, ...prevMessages]);
         messageEndRef.current.scrollIntoView({behavior:'smooth'})
     }
@@ -28,7 +28,7 @@ export default function ChatPage(){
         //Implement the logic to send the prompt to the assistant
 
         const response = "Hello, this is Bing. How can I help? ";
-        handleAssistantResponse(response);
+        handleAssistantResponse({content : response});
     }
 
     function handleAssistantResponse(response){
@@ -41,11 +41,11 @@ export default function ChatPage(){
 
     useEffect(()=>{
         const greeting = `Hi, I'm ${assistantName}. I'm here to chat with you in ${assistantMode} mode.`;
-        handleAssistantResponse(greeting);
+        handleAssistantResponse({content: greeting});
     },[])
 
     return (
-        <div className="container relative h-screen p-2 mx-auto">
+        <div className="container relative h-screen flex flex-col items-center px-2 mx-auto">
             <ChatHeader name={assistantName} mode={assistantMode}/>
             <div className="chat-container container mx-auto overflow-y-scroll">
                  <Chat messages={messages} />
