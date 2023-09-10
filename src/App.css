@@ -1,38 +1,130 @@
-.App {
-  text-align: center;
+/* A common style for message bubbles */
+.message {
+  max-width: 80%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.user-message {
+  align-self: flex-end;
+  background-color: #ba4bff;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.assistant-message {
+  align-self: flex-start;
+  background-color: #fff;
+  color:  #333333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.message-text {
+  word-wrap:break-word;
+  white-space:pre-wrap;
+}
+
+/* A style for the message time */
+.message-time {
+  font-size: 12px;
+  color: #999999;
+  text-align: right;
+}
+
+/* A style for chat input box and button */
+.chat-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding : 10px;
+  border : none;
+  border-radius: 10px;
+}
+
+textarea {
+  resize: none;
+  white-space: pre-wrap;
+}
+
+.chat-input div::-webkit-scrollbar {
+  width:2px;
+}
+
+.chat-input button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #0078d4;
+  color: #ffffff;
+}
+
+/* A style for chat header */
+.chat-header {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.chat-name {
+  font-family: Arial, sans-serif;
+  font-size: em(20);
+}
+
+.chat-mode {
+  font-family: Arial, sans-serif;
+  font-size: em(16);
+}
+
+
+/* A style for the chat messages container */
+.chat-container {
+  height : 75%;
+}
+.chat-messages {
+  display: flex;
+  flex-direction: column-reverse;
+  height : 90%
+}
+
+/* A style for the chat app container */
+.chat-app {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+/* A media query that applies some styles only when screen width is less than or equal to em(600) */
+@media (max-width: em(600)) {
+  
+  .message {
+    margin: em(5);
+    padding: em(5);
+  }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .message-text,
+  .message-time{
+    font-size: em(14);
   }
-  to {
-    transform: rotate(360deg);
+
+  .chat-input input,
+  .chat-input button {
+    padding : em(5);
   }
+
+  .chat-name,
+  .chat-mode {
+    font-size: em(16);
+  }
+
+
+  .chat-header {
+    grid-template-columns: auto;
+  }
+  
 }
